@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
+using MySql.Data.EntityFrameworkCore.Extensions;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using DnTinder.Data;
+using DnTinder.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -55,13 +56,14 @@ namespace DnTinder
                         ClockSkew = TimeSpan.Zero
                     };
                 });
-
-            services.AddDbContextPool<DnTinder.Models.DnTinderContext>(options =>
-                options.UseNpgsql(
+            
+            services.AddDbContextPool<DnTinderContext>(options =>
+                options.UseMySQL(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<DnTinder.Models.DnTinderContext>();
+                .AddEntityFrameworkStores<DnTinderContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             System.Console.WriteLine(services);

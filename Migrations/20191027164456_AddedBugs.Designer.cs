@@ -3,14 +3,16 @@ using System;
 using DnTinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DnTinder.Migrations
 {
     [DbContext(typeof(DnTinderContext))]
-    partial class DnTinderContextModelSnapshot : ModelSnapshot
+    [Migration("20191027164456_AddedBugs")]
+    partial class AddedBugs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

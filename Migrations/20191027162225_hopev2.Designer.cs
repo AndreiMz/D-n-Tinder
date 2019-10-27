@@ -3,34 +3,20 @@ using System;
 using DnTinder.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DnTinder.Migrations
 {
     [DbContext(typeof(DnTinderContext))]
-    partial class DnTinderContextModelSnapshot : ModelSnapshot
+    [Migration("20191027162225_hopev2")]
+    partial class hopev2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
-
-            modelBuilder.Entity("DnTinder.Models.Bug", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ExpectedBehaviour");
-
-                    b.Property<string>("ObservedBehaviour");
-
-                    b.Property<string>("ReproductionSteps");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Bugs");
-                });
 
             modelBuilder.Entity("DnTinder.Models.Preference", b =>
                 {
