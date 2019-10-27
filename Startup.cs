@@ -57,7 +57,7 @@ namespace DnTinder
                 });
 
             services.AddDbContextPool<DnTinder.Models.DnTinderContext>(options =>
-                options.UseSqlite(
+                options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)

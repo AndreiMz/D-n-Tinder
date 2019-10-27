@@ -10,10 +10,20 @@ namespace DnTinder.Controllers
 {
     public class UsersController : Controller
     {
+        private readonly DnTinderContext db;
+
+        public UsersController(DnTinderContext context){
+            db = context;
+        }
+
         [HttpGet]
         public string Allow(string username, string password)
         {
          return "penis";
+        }
+
+        public IEnumerable<Preference> Dbtest(){
+            return db.Preferences.ToArray();
         }
     }
 }
